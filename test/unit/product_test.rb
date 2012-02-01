@@ -56,6 +56,24 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal "has already been taken", product.errors[:title].join(';')
   end
 
+  test "product is not valid with a short title" do
+    product = 	  Product.new(title: "a"*3,
+		                      description: "yyy",
+		                      price: 1,
+		                      image_url: "fred.gif")
+    assert !product.save
+    assert_equal "please enter at least 6 characters", product.errors[:title].join(';')
+  end
+  
+    test "product is not valid with a long title" do
+    product = 	  Product.new(title: "a"*21,
+		                      description: "yyy",
+		                      price: 1,
+		                      image_url: "fred.gif")
+    assert !product.save
+    assert_equal "is too long (maximum is 20 characters)", product.errors[:title].join(';')
+  end
+
 end
 
 
