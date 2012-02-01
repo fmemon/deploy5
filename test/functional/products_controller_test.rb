@@ -15,6 +15,18 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:products)
+
+   assert_select '#columns #side a', minimum: 4
+   assert_select '#main table tr', 3 
+   assert_select 'dt', 'Programming Ruby 1.9'
+   assert_select 'td img.list_image', 3
+   assert_select 'td.list_actions > a', 9
+   assert_select 'tr.list_line_odd', 2
+   assert_select 'tr.list_line_even', 1
+   assert_select '#banner img', 1
+   assert_select 'div#banner ', 'Pragmatic Bookshelf'
+   assert_select "img[src=/assets/logo.png]", 1
+
   end
 
   test "should get new" do

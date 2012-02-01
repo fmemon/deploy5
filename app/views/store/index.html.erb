@@ -11,6 +11,7 @@
      <h3><%= product.title %></h3>
      <%= sanitize(product.description) %>
      <div class="price_line">
+<!--         <span class="price"><%= number_to_currency(product.price, :unit => "&pound;", :separator => ",", :delimiter => "") %></span> -->
          <span class="price"><%= number_to_currency(product.price) %></span>
      </div>
    </div>
