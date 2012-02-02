@@ -6,7 +6,7 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'will_paginate'
 gem 'annotate', '~> 2.4.1.beta'
 
 
