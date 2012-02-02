@@ -5,3 +5,12 @@ class CartTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+# == Schema Information
+#
+# Table name: carts
+#
+#  id         :integer         not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#
+
