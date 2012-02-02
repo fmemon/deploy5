@@ -1,7 +1,10 @@
 <% if notice %>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 <% end %>
 
+<% if session[:counter] >3 %>
+  <p>You have accessed this page: <%= pluralize(session[:counter], 'time') %></p>
+<% end %>
 
 <h1>Your Pragmatic Catalog</h1>
 
