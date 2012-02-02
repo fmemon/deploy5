@@ -38,14 +38,12 @@
     background: white;
   }
 
-//#START:side
   #side {
     float: left;
     padding: 1em 2em;
     width: 13em;
     background: #141;
 
-/* START_HIGHLIGHT */
     form, div {
       display: inline;
     }  
@@ -65,7 +63,6 @@
       }
     }
 
-/* END_HIGHLIGHT */
     ul {
       padding: 0;
 
@@ -79,5 +76,40 @@
       }
     }
   }
-//#END:side
+}
+
+.depot_form {
+  fieldset {
+    background: #efe;
+    
+    legend {
+      color: #dfd;
+      background: #141;
+      font-family: sans-serif;
+      padding: 0.2em 1em;
+    }
+  }
+  
+  form {
+    label {
+      width: 5em;
+      float: left;
+      text-align: right;
+      padding-top: 0.2em;
+      margin-right: 0.1em;
+      display: block;
+    }
+    
+    select, textarea, input {
+      margin-left: 0.5em;
+    }
+  
+		.submit {
+			margin-left: 4em;
+		}
+  
+		br {
+			display: none;
+		}
+  }
 }

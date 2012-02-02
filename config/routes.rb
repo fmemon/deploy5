@@ -1,5 +1,7 @@
 Depot5::Application.routes.draw do
   
+  resources :orders
+
   #put "line_items/decrease", via: :put, as: 'decrease_line_item', on: :member
   resources :line_items  do
 # 		member do
