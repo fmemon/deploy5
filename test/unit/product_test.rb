@@ -62,16 +62,16 @@ class ProductTest < ActiveSupport::TestCase
 		                      price: 1,
 		                      image_url: "fred.gif")
     assert !product.save
-    assert_equal "please enter at least 6 characters", product.errors[:title].join(';')
+    assert_equal "is too short (minimum is 6 characters)", product.errors[:title].join(';')
   end
   
     test "product is not valid with a long title" do
-    product = 	  Product.new(title: "a"*21,
+    product = 	  Product.new(title: "a"*41,
 		                      description: "yyy",
 		                      price: 1,
 		                      image_url: "fred.gif")
     assert !product.save
-    assert_equal "is too long (maximum is 20 characters)", product.errors[:title].join(';')
+    assert_equal "is too long (maximum is 40 characters)", product.errors[:title].join(';')
   end
 
 end

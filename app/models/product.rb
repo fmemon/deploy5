@@ -5,7 +5,8 @@ class Product < ActiveRecord::Base
 
   validates :title, :description, :image_url, presence: true
   validates :price, numericality: {:greater_than_or_equal_to => 0.01, :less_than_or_equal_to => 100.00}
-  validates :title, uniqueness: true, :length => {:within => 6..40, :too_short => "please enter at least 6 characters"}
+  #validates :title, uniqueness: true, :length => {:within => 6..40, :too_short => "please enter at least 6 characters"}
+  validates :title, uniqueness: true, :length => {:within => 6..40}
   validates :image_url, uniqueness: true, 
                                       allow_blank: true, 
                                       format: { with: %r{\.(gif|jpg|png)$}i, message: "must be a URL for GIF, JPG, or PNG image. "}
