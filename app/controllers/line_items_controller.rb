@@ -57,7 +57,22 @@ class LineItemsController < ApplicationController
       end
     end
   end
-    
+  
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def decrease
+   cart = current_cart
+    @line_item = cart.decrease(params[:id]) # passing in line_item.id
+    respond_to do |format|
+      if @line_item.update_attributes(params[:line_item])
+        format.html { redirect_to store_url }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PUT /line_items/1
   # PUT /line_items/1.json
