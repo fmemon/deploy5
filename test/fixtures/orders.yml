@@ -4,13 +4,14 @@ one:
   name: Dave Thomas
   address: MyText
   email: dave@example.org
-  pay_type: Check
+  pay_type: one
 
 two:
   name: MyString
   address: MyText
   email: MyString
-  pay_type: MyString
+  pay_type: one
+  
 # == Schema Information
 #
 # Table name: orders
@@ -19,6 +20,7 @@ two:
 #  name        :string(255)
 #  address     :text
 #  email       :string(255)
+#  pay_type    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
 #  pay_type_id :integer

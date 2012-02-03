@@ -4,17 +4,17 @@ class OrdersControllerTest < ActionController::TestCase
   setup do
     @order = orders(:one)
   end
-  
-  test "requires item in cart" do
-    get :new
-    assert_redirected_to store_path
-    assert_equal flash[:notice], 'Your cart is empty'
-  end
-  
+
   test "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:orders)
+  end
+
+  test "requires item in cart" do
+    get :new
+    assert_redirected_to store_path
+    assert_equal flash[:notice], 'Your cart is empty'
   end
 
   test "should get new" do
