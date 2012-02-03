@@ -10,6 +10,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   # filing in their details on the checkout form.
   # When they submit, an order is created containing their information,
   # along with a single line item corresponding to the product they added to their cart.
+  # then when the ship date is updated the shipped email will do out
   
   test "buying a product" do
     LineItem.delete_all
@@ -58,5 +59,23 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal ["dave@example.com"], mail.to
     assert_equal 'Sam Ruby <depot@example.com>', mail[:from].value
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
+    
+    ship_date = Time.now.to_date 
+    order.ship_date = ship_date
+    post_via_redirect "/orders", id: order.to_param
+    assert_equal ship_date, order.ship_date.to_date  
+    
   end
+  
+ test "should mail the admin when error occurs" do
+    get "/carts/wibble" 
+    assert_response :redirect  # should redirect to...
+    assert_template "/"        # ...store index
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["dave@example.org"], mail.to
+    assert_equal 'Sam Ruby <depot@example.com>', mail[:from].value
+    assert_equal "App Errored", mail.subject
+  end
+
 end

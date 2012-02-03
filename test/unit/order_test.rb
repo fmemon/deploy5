@@ -16,5 +16,6 @@ end
 #  created_at  :datetime
 #  updated_at  :datetime
 #  pay_type_id :integer
+#  ship_date   :datetime
 #
 

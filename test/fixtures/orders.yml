@@ -20,9 +20,9 @@ two:
 #  name        :string(255)
 #  address     :text
 #  email       :string(255)
-#  pay_type    :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
 #  pay_type_id :integer
+#  ship_date   :datetime
 #
 
