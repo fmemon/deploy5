@@ -17,5 +17,7 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #  quantity   :integer         default(1)
+#  price      :decimal(, )
+#  order_id   :integer
 #
 
