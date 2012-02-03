@@ -13,6 +13,7 @@ Depot5::Application.routes.draw do
   end 
 
   resources :carts
+# resources :carts, :except => [:index, :show]
 
   get "store/index"
 

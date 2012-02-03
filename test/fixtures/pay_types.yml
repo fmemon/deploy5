@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Check
 
 two:
-  name: MyString
+  name: Cash
 # == Schema Information
 #
 # Table name: pay_types
