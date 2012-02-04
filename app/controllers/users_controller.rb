@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    params[:action] = :edit
   end
 
   # POST /users
@@ -55,19 +56,24 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   # PUT /users/1.json
-  def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
+def update
+  @user = User.find(params[:id])    
+#  if @user.authenticate(params[:current_password ])    
+   if @user.authenticate(params[:user][:current_password])
+    params[:user].delete :current_password      
+    respond_to do |format|      
       if @user.update_attributes(params[:user])
-        format.html { redirect_to users_url, notice: 'User #{@user.name} was successfully updated.' }
+        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
-  end
+    end      
+  else
+    redirect_to edit_user_path(@user), notice: 'Current password is incorrect'
+  end      
+end  
 
   # DELETE /users/1
   # DELETE /users/1.json

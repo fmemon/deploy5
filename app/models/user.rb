@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
-  
+attr_accessor :current_password
+
   validates :name, presence: true, uniqueness: true
   has_secure_password
   

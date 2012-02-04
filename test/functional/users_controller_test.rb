@@ -4,6 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
     @input_attributes = {name: "sam", password: "private", password_confirmation: "private"}
+    @update_attributes = {name: "dave", password: "secret", password_confirmation: "secret", current_password: "secret"}
   end
 
   test "should get index" do
@@ -36,7 +37,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    put :update, id: @user.to_param, user: @input_attributes
+    put :update, id: @user.to_param, user: @update_attributes
     assert_redirected_to users_path
   end
 
