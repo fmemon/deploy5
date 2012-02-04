@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+  skip_before_filter :authorize, :only => [:who_bought]
+  before_filter :authorize_digest, :only => [:who_bought]
+
+
   # GET /products
   # GET /products.json
   def index

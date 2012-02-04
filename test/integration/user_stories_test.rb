@@ -80,4 +80,32 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
 #     assert_equal "App Errored", mail.subject
 #   end
 
+	test "should fail on access of sensitive data" do
+			# login user
+			user = users(:one)
+			get "/login" 
+			assert_response :success
+			post_via_redirect "/login", name: user.name, password: 'secret'
+			assert_response :success
+			assert_equal '/admin', path
+	
+			# look at a protected resource
+			get "/carts/12345" 
+			assert_response :success  
+			assert_equal '/carts/12345', path
+	
+			# logout user
+			delete "/logout" 
+			assert_response :redirect
+			assert_template "/"      
+	
+			#try to look at protected resource again, should be redirected to login page
+			get "/carts/12345" 
+			assert_response :redirect
+			follow_redirect!  
+			assert_equal '/login', path      
+		end
+
+
+
 end
