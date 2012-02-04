@@ -1,5 +1,7 @@
 Depot5::Application.routes.draw do
   
+  resources :users
+
   resources :pay_types
 
   resources :orders
