@@ -26,6 +26,18 @@
         <li><a href="http://localhost:3000">Contact</a></li>
        <li>Updated: <%= Date.today.to_s %></li>
       </ul>
+      
+      <% if session[:user_id] %>
+						<ul>
+							<li><%= link_to 'Orders',	orders_path	%></li>
+							<li><%= link_to 'Products', products_path %></li> 
+							<li><%= link_to 'Users',	users_path	%></li>
+					</ul>
+					<%= button_to 'Logout', logout_path, method: :delete	%> 
+				<% else %>
+           <%= button_to 'Login', login_path	%>
+      <% end%>
+
     </div>
     
     <div id="main">

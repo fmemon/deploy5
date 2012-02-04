@@ -67,15 +67,17 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     
   end
   
- test "should mail the admin when error occurs" do
-    get "/carts/wibble" 
-    assert_response :redirect  # should redirect to...
-    assert_template "/"        # ...store index
-
-    mail = ActionMailer::Base.deliveries.last
-    assert_equal ["dave@example.org"], mail.to
-    assert_equal 'Sam Ruby <depot@example.com>', mail[:from].value
-    assert_equal "App Errored", mail.subject
-  end
+  # no longer possible since we have in cart controller 
+  #  skip_before_filter :authorize, only: [:create, :update, :destroy]
+#  test "should mail the admin when error occurs" do
+#     get "/carts/wibble" 
+#     assert_response :redirect  # should redirect to...
+#     assert_template "/"        # ...store index
+# 
+#     mail = ActionMailer::Base.deliveries.last
+#     assert_equal ["dave@example.org"], mail.to
+#     assert_equal 'Sam Ruby <depot@example.com>', mail[:from].value
+#     assert_equal "App Errored", mail.subject
+#   end
 
 end
